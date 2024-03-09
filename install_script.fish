@@ -27,6 +27,14 @@ function command_silent
   end
 end
 
+function embed_command_silent
+  $argv &>/dev/null
+  if test $status -ne 0
+    echo "ERROR: command '$argv' failed with code $status"
+    exit
+  end
+end
+
 set -l programs {
 "neovim", 
 "zellij",
