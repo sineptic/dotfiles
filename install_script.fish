@@ -27,6 +27,14 @@ function command_silent
   end
 end
 
+function embed_command_silent
+  $argv &>/dev/null
+  if test $status -ne 0
+    echo "ERROR: command '$argv' failed with code $status"
+    exit
+  end
+end
+
 set -l programs {
 "neovim", 
 "zellij",
@@ -41,7 +49,8 @@ set -l programs {
 "python",
 "python-pip",
 "starship",
-"wget"
+"wget",
+"fisher",
 }
 set -l fonts {
 "ttf-monofur-nerd",
@@ -91,8 +100,15 @@ function bat_dotfiles
   echo "bat configuration is finished"
 end
 
+function fish_theming
+  embed_command_silent fisher install catppuccin/fish 
+  embed_command_silent fish_config theme save "Catppuccin Mocha"
+  echo "fish theming is finished"
+end
+
 get_user_agreement
 if test $status -eq 1
   bat_dotfiles
-  echo "configuration complete"
+  fish_theming
+  echo "configuration completed"
 end
