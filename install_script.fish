@@ -19,6 +19,13 @@ function get_user_agreement -d "user must write 'y'(return 1) or 'n'(return 0)"
   end
 end
 
+function command_silent
+  command $argv &>/dev/null
+  if test $status -ne 0
+    echo "ERROR: command '$argv' failed with code $status"
+    exit
+  end
+end
 
 set -l programs {
 "neovim", 
@@ -74,16 +81,18 @@ end
 echo -n "Install dotfiles?"
 
 function bat_dotfiles
-  command mkdir -p "$dotfiles_dir/bat/themes"
-  command ln -sf "$dotfiles_dir/bat" "$(path normalize "$(bat --config-dir)/..")/"
-  command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
-  command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
-  command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
-  command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
-  command bat cache --build
+  command_silent mkdir -p "$dotfiles_dir/bat/themes"
+  command_silent ln -sf "$dotfiles_dir/bat" "$(path normalize "$(bat --config-dir)/..")/"
+  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+  command_silent bat cache --build
+  echo "bat configuration is finished"
 end
 
 get_user_agreement
 if test $status -eq 1
   bat_dotfiles
+  echo "configuration complete"
 end
