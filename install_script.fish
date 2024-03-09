@@ -83,10 +83,10 @@ echo -n "Install dotfiles?"
 function bat_dotfiles
   command_silent mkdir -p "$dotfiles_dir/bat/themes"
   command_silent ln -sf "$dotfiles_dir/bat" "$(path normalize "$(bat --config-dir)/..")/"
-  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
-  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
-  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
-  command_silent wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+  command_silent wget --no-clobber -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+  command_silent wget --no-clobber -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+  command_silent wget --no-clobber -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+  command_silent wget --no-clobber -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
   command_silent bat cache --build
   echo "bat configuration is finished"
 end
