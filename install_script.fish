@@ -21,16 +21,18 @@ end
 
 function command_silent
   command $argv &>/dev/null
-  if test $status -ne 0
-    echo "ERROR: command '$argv' failed with code $status"
+  set -f status_cache $status
+  if test $status_cache -ne 0
+    echo "ERROR: command '$argv' failed with code $status_cache"
     exit
   end
 end
 
 function embed_command_silent
   $argv &>/dev/null
-  if test $status -ne 0
-    echo "ERROR: command '$argv' failed with code $status"
+  set -f status_cache $status
+  if test $status_cache -ne 0
+    echo "ERROR: command '$argv' failed with code $status_cache"
     exit
   end
 end
@@ -106,9 +108,20 @@ function fish_theming
   echo "fish theming is finished"
 end
 
+function btop_dotfiles
+  command_silent mkdir -p "$dotfiles_dir/btop/themes"
+  command_silent ln -sf "$dotfiles_dir/btop" "$HOME/.config/"
+  command_silent wget --no-clobber -qP "$dotfiles_dir/btop/themes" https://github.com/catppuccin/btop/raw/main/themes/catppuccin_frappe.theme
+  command_silent wget --no-clobber -qP "$dotfiles_dir/btop/themes" https://github.com/catppuccin/btop/raw/main/themes/catppuccin_latte.theme
+  command_silent wget --no-clobber -qP "$dotfiles_dir/btop/themes" https://github.com/catppuccin/btop/raw/main/themes/catppuccin_macchiato.theme
+  command_silent wget --no-clobber -qP "$dotfiles_dir/btop/themes" https://github.com/catppuccin/btop/raw/main/themes/catppuccin_mocha.theme
+  echo "btop configuration is finished"
+end
+
 get_user_agreement
 if test $status -eq 1
   bat_dotfiles
+  btop_dotfiles
   fish_theming
   echo "configuration completed"
 end
