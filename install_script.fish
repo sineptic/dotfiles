@@ -74,13 +74,13 @@ end
 echo -n "Install dotfiles?"
 
 function bat_dotfiles
-  mkdir -p "$dotfiles_dir/bat/themes"
-  ln -sf "$dotfiles_dir/bat/" "$(bat --config-dir)"
+  command mkdir -p "$dotfiles_dir/bat/themes"
+  command ln -sf "$dotfiles_dir/bat" "$(path normalize "$(bat --config-dir)/..")/"
   command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
   command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
   command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
   command wget -qP "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
-  bat cache --build
+  command bat cache --build
 end
 
 get_user_agreement
