@@ -62,13 +62,14 @@ printf "\n"
 
 # execute commands with root access
 set root_commands_as_string "$(string join -n "; " $root_commands)" 
-if fish_is_root_user
-  command $root_commands_as_string
-else
-  printf "Root " # root password
-  command su -c $root_commands_as_string
+if test -n $root_commands_as_string
+  if fish_is_root_user
+    command $root_commands_as_string
+  else
+    printf "Root " # root password
+    command su -c $root_commands_as_string
+  end
 end
-printf "\n"
 
 echo -n "Install dotfiles?"
 
