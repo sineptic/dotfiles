@@ -53,6 +53,7 @@ set -l programs {
 "starship",
 "wget",
 "fisher",
+"starship",
 }
 set -l fonts {
 "ttf-monofur-nerd",
@@ -89,7 +90,6 @@ if test -n $root_commands_as_string
   end
 end
 
-echo -n "Install dotfiles?"
 
 function bat_dotfiles
   command_silent mkdir -p "$dotfiles_dir/bat/themes"
@@ -104,7 +104,7 @@ end
 
 function fish_theming
   embed_command_silent fisher install catppuccin/fish 
-  embed_command_silent fish_config theme save "Catppuccin Mocha"
+  embed_command_silent echo "y" | fish_config theme save "Catppuccin Mocha"
   echo "fish theming is finished"
 end
 
@@ -118,10 +118,17 @@ function btop_dotfiles
   echo "btop configuration is finished"
 end
 
+function starship_dotfiles
+  command_silent ln -sf "$dotfiles_dir/starship/catppuccin/starship.toml" "$HOME/.config/"
+  echo "starship configuration is finished"
+end
+
+echo -n "Install dotfiles?"
 get_user_agreement
 if test $status -eq 1
   bat_dotfiles
   btop_dotfiles
+  starship_dotfiles
   fish_theming
   echo "configuration completed"
 end
