@@ -1,4 +1,4 @@
-j!/usr/bin/env fish
+#!/usr/bin/env fish
 
 set root_commands
 
@@ -129,6 +129,7 @@ end
 
 function fish_dotfiles
   command_silent ln -sf "$dotfiles_dir/fish" "$HOME/.config/"
+  fish_theming
   echo "fish configuration is finished"
 end
 
@@ -138,7 +139,7 @@ if test $status -eq 1
   bat_dotfiles
   btop_dotfiles
   starship_dotfiles
-  fish_theming
+  fish_dotfiles
   fzf_theming
   echo "configuration completed"
 end
