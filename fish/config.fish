@@ -1,19 +1,19 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-  function ls 
+  function ls -w exa 
     command exa $argv
   end
-  function ll
+  function ll -w exa
     command exa --long --no-user --no-time --smart-group $argv
   end
-  function lls
+  function lls -w exa 
     ll --total-size $argv
   end
 
-  function tree
+  function tree -w exa 
     command exa --tree $argv
   end
-  function ftree
+  function ftree -w exa 
     tree --level 1 $argv
   end
   function suc -w command -d 'alisas for su -c "argv"'
