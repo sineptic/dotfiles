@@ -2,3 +2,10 @@ bat/themes/**
 
 btop/btop.log
 btop/themes/**
+
+fish/completions/**
+fish/conf.d/**
+fish/fish_plugins
+fish/fish_variables
+fish/themes/**
+fish/functions/_**
