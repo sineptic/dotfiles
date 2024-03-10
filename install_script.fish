@@ -104,7 +104,7 @@ end
 
 function fish_theming
   embed_command_silent fisher install catppuccin/fish 
-  embed_command_silent echo "y" | fish_config theme save "Catppuccin Mocha"
+  echo "y" | embed_command_silent fish_config theme save "Catppuccin Mocha"
   echo "fish theming is finished"
 end
 
