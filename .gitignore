@@ -9,3 +9,5 @@ fish/fish_plugins
 fish/fish_variables
 fish/themes/**
 fish/functions/_**
+
+starship/catppuccin/**

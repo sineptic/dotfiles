@@ -119,6 +119,9 @@ function btop_dotfiles
 end
 
 function starship_dotfiles
+  command_silent rm -r "$dotfiles_dir/starship/catppuccin/"
+  command_silent mkdir -p "$dotfiles_dir/starship/catppuccin/"
+  command_silent wget --no-clobber -qP "$dotfiles_dir/starship/catppuccin" https://github.com/sineptic/starship-catppuccin/raw/main/starship.toml
   command_silent ln -sf "$dotfiles_dir/starship/catppuccin/starship.toml" "$HOME/.config/"
   echo "starship configuration is finished"
 end
