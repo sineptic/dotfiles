@@ -26,5 +26,6 @@ if status is-interactive
   eval (zellij setup --generate-completion fish | string collect)
 end
 
+set -a PATH "$HOME/.cargo/bin"
 # Created by `pipx`
-set PATH $PATH /home/sineptic/.local/bin
+set PATH $PATH "$HOME/.local/bin"
