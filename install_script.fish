@@ -136,6 +136,11 @@ function fish_dotfiles
   echo "fish configuration is finished"
 end
 
+function zellij_dotfiles
+  command_silent ln -sf "$dotfiles_dir/zellij" "$HOME/.config/"
+  echo "zellij configuration is finished"
+end
+
 echo -n "Install dotfiles?"
 get_user_agreement
 if test $status -eq 1
@@ -144,5 +149,6 @@ if test $status -eq 1
   starship_dotfiles
   fish_dotfiles
   fzf_theming
+  zellij_dotfiles
   echo "configuration completed"
 end
