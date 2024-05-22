@@ -11,3 +11,4 @@ fish/themes/**
 fish/functions/_**
 
 starship/catppuccin/**
+lazygit/catppuccin/**
