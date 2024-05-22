@@ -54,6 +54,9 @@ set -l programs {
 "wget",
 "fisher",
 "starship",
+"yazi",
+"lazygit",
+"alacritty",
 }
 set -l fonts {
 "ttf-monofur-nerd",
@@ -119,6 +122,9 @@ function btop_dotfiles
 end
 
 function starship_dotfiles
+  command_silent rm -rf "$dotfiles_dir/starship/catppuccin/"
+  command_silent mkdir -p "$dotfiles_dir/starship/catppuccin/"
+  command_silent wget --no-clobber -qP "$dotfiles_dir/starship/catppuccin" https://github.com/sineptic/starship-catppuccin/raw/main/starship.toml
   command_silent ln -sf "$dotfiles_dir/starship/catppuccin/starship.toml" "$HOME/.config/"
   echo "starship configuration is finished"
 end
@@ -133,13 +139,37 @@ function fish_dotfiles
   echo "fish configuration is finished"
 end
 
+function zellij_dotfiles
+  command_silent ln -sf "$dotfiles_dir/zellij" "$HOME/.config/"
+  echo "zellij configuration is finished"
+end
+
+function alacritty_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/alacritty" "$HOME/.config/"
+  echo "alacritty configuration is finished"
+end
+
+function yazi_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/yazi" "$HOME/.config/"
+  echo "yazi configuration is finished"
+end
+
+function lazygit_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/lazygit" "$HOME/.config/"
+  echo "lazygit configuration is finished"
+end
+
 echo -n "Install dotfiles?"
 get_user_agreement
 if test $status -eq 1
-  bat_dotfiles
-  btop_dotfiles
-  starship_dotfiles
-  fish_dotfiles
-  fzf_theming
-  echo "configuration completed"
+    bat_dotfiles
+    btop_dotfiles
+    starship_dotfiles
+    fish_dotfiles
+    fzf_theming
+    zellij_dotfiles
+    alacritty_dotfiles
+    yazi_dotfiles
+    lazygit_dotfiles
+    echo "configuration completed"
 end
