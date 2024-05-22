@@ -54,6 +54,8 @@ set -l programs {
 "wget",
 "fisher",
 "starship",
+"yazi",
+"lazygit",
 "alacritty",
 }
 set -l fonts {
@@ -147,6 +149,16 @@ function alacritty_dotfiles # TODO: add theme downloading
   echo "alacritty configuration is finished"
 end
 
+function yazi_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/yazi" "$HOME/.config/"
+  echo "yazi configuration is finished"
+end
+
+function lazygit_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/lazygit" "$HOME/.config/"
+  echo "lazygit configuration is finished"
+end
+
 echo -n "Install dotfiles?"
 get_user_agreement
 if test $status -eq 1
@@ -157,5 +169,7 @@ if test $status -eq 1
     fzf_theming
     zellij_dotfiles
     alacritty_dotfiles
+    yazi_dotfiles
+    lazygit_dotfiles
     echo "configuration completed"
 end
