@@ -1,0 +1,10 @@
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+startup_mode = "Fullscreen"
+
+[font]
+normal = { family = "Monofur Nerd Font" }
+size = 17

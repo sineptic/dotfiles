@@ -54,6 +54,7 @@ set -l programs {
 "wget",
 "fisher",
 "starship",
+"alacritty",
 }
 set -l fonts {
 "ttf-monofur-nerd",
@@ -141,14 +142,20 @@ function zellij_dotfiles
   echo "zellij configuration is finished"
 end
 
+function alacritty_dotfiles # TODO: add theme downloading
+  command_silent ln -sf "$dotfiles_dir/alacritty" "$HOME/.config/"
+  echo "alacritty configuration is finished"
+end
+
 echo -n "Install dotfiles?"
 get_user_agreement
 if test $status -eq 1
-  bat_dotfiles
-  btop_dotfiles
-  starship_dotfiles
-  fish_dotfiles
-  fzf_theming
-  zellij_dotfiles
-  echo "configuration completed"
+    bat_dotfiles
+    btop_dotfiles
+    starship_dotfiles
+    fish_dotfiles
+    fzf_theming
+    zellij_dotfiles
+    alacritty_dotfiles
+    echo "configuration completed"
 end
