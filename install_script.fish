@@ -78,7 +78,7 @@ printf "\n"
 echo -n "Install fonts?"
 get_user_agreement
 if test $status -eq 1
-  set -a root_commands "pacman -Sy --needed $programs_as_string"
+  set -a root_commands "pacman -Sy --needed $fonts_as_string"
 end
 printf "\n"
 
