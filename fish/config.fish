@@ -24,6 +24,12 @@ if status is-interactive
     function lazygit -w lazygit
         command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/catppuccin/themes-mergable/mocha/mauve.yml"
     end
+    function c -w cargo
+        command cargo $argv
+    end
+    function nv -w nvim
+        command nvim $argv
+    end
 
   starship init fish | source
   zoxide init --cmd cd fish | source
