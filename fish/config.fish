@@ -18,8 +18,20 @@ if status is-interactive
     function suc -w command -d 'alisas for su -c "argv"'
         command su -c "$argv"
     end
+    function subc -w command -d 'alisas for su build -c "argv"'
+        command su build -c "$argv"
+    end
     function lazygit -w lazygit
-        command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/catppuccin/themes-mergable/mocha/mauve.yml"
+        command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/catppuccin/themes-mergable/mocha/mauve.yml" $argv
+    end
+    function lg -w lazygit
+        lazygit $argv
+    end
+    function c -w cargo
+        command cargo $argv
+    end
+    function nv -w nvim
+        command nvim $argv
     end
 
   starship init fish | source

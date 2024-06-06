@@ -1,8 +1,0 @@
-#!/usr/bin/env fish
-
-useradd build -m -G wheel
-
-su build -c "sudo $(path dirname $(status --current-filename))/tmp"
-
-userdel build;
-rm -rf /home/build/
