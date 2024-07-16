@@ -33,6 +33,12 @@ if status is-interactive
     function nv -w nvim
         command nvim $argv
     end
+    function pass -w pass
+        WAYLAND_DISPLAY="" EDITOR="nvim" command pass $argv
+    end
+    function passget -w "pass show"
+        pass show $argv -c1
+    end
 
   starship init fish | source
   zoxide init --cmd cd fish | source
@@ -43,3 +49,5 @@ end
 set -a PATH "$HOME/.cargo/bin"
 # Created by `pipx`
 set PATH $PATH "$HOME/.local/bin"
+set -x EDITOR "nvim"
+set -x copy_cmd "fish_clipboard_copy"

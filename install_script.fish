@@ -22,6 +22,7 @@ set -l programs {
 "yazi",
 "lazygit",
 "alacritty",
+"pass",
 }
 set -l fonts {
 "ttf-monofur-nerd",
