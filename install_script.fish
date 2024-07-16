@@ -2,6 +2,36 @@
 
 set root_commands
 
+set -l programs {
+"neovim", 
+"zellij",
+"bat",
+"eza",
+"zoxide",
+"btop",
+"fastfetch",
+"fisher",
+"fzf",
+"less",
+"python",
+"python-pip",
+"starship",
+"wget",
+"fisher",
+"starship",
+"yazi",
+"lazygit",
+"alacritty",
+}
+set -l fonts {
+"ttf-monofur-nerd",
+"ttf-jetbrains-mono-nerd",
+"ttf-zed-mono-nerd",
+}
+set programs_as_string $(for program in $programs; echo $(string trim $program); end | string collect | string split "\n" | string join " ")
+set fonts_as_string $(for font in $fonts; echo $(string trim $font); end | string collect | string split "\n" | string join " ")
+set dotfiles_dir $(realpath $(status dirname))
+
 function get_user_agreement -d "user must write 'y'(return 1) or 'n'(return 0)"
   set -l input ""
 
@@ -37,34 +67,6 @@ function embed_command_silent
   end
 end
 
-set -l programs {
-"neovim", 
-"zellij",
-"bat",
-"eza",
-"zoxide",
-"btop",
-"fastfetch",
-"fisher",
-"fzf",
-"less",
-"python",
-"python-pip",
-"starship",
-"wget",
-"fisher",
-"starship",
-"yazi",
-"lazygit",
-"alacritty",
-}
-set -l fonts {
-"ttf-monofur-nerd",
-"ttf-jetbrains-mono-nerd"
-}
-set programs_as_string $(for program in $programs; echo $(string trim $program); end | string collect | string split "\n" | string join " ")
-set fonts_as_string $(for font in $fonts; echo $(string trim $font); end | string collect | string split "\n" | string join " ")
-set dotfiles_dir $(realpath $(status dirname))
 
 
 echo -n "Install programs?"
