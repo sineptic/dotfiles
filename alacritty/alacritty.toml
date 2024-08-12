@@ -6,5 +6,7 @@ import = [
 startup_mode = "Fullscreen"
 
 [font]
-normal = { family = "Monofur Nerd Font" }
-size = 17
+# normal = { family = "Monofur Nerd Font" }
+# size = 17
+normal = { family = "GeistMono Nerd Font" }
+size = 14

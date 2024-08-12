@@ -26,7 +26,6 @@ set -l programs {
 }
 set -l fonts {
 "ttf-monofur-nerd",
-"ttf-jetbrains-mono-nerd",
 "ttf-zed-mono-nerd",
 }
 set programs_as_string $(for program in $programs; echo $(string trim $program); end | string collect | string split "\n" | string join " ")

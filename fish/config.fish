@@ -1,18 +1,18 @@
 if status is-interactive
       # Commands to run in interactive sessions can go here
-    function ls -w exa 
-        command exa $argv
+    function ls -w eza 
+        command eza $argv
     end
-    function ll -w exa
-        command exa --long --no-user --no-time --smart-group $argv
+    function ll -w eza
+        command eza --long --no-user --no-time --smart-group $argv
     end
-    function lls -w exa 
+    function lls -w eza 
         ll --total-size $argv
     end 
-    function tree -w exa 
-        command exa --tree $argv
+    function tree -w eza 
+        command eza --tree $argv
     end
-    function ftree -w exa 
+    function ftree -w eza 
         tree --level 1 $argv
     end
     function suc -w command -d 'alisas for su -c "argv"'
@@ -38,6 +38,12 @@ if status is-interactive
     end
     function passget -w "pass show"
         pass show $argv -c1
+    end
+    function z -w cd 
+        cd $argv && ls
+    end
+    function .. 
+        z ..
     end
 
   starship init fish | source
