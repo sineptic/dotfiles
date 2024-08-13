@@ -2,13 +2,15 @@ layout {
     pane_template name="pane_ui" {
         command "fish"
     }
-    tab name="misc" {
+    tab name="misc" focus=true {
         pane_ui {
             args "-C" "fastfetch"
         } 
     }
     tab name="development" {
-        pane_ui 
+        pane_ui {
+            cwd "~/develop"
+        }
     }
     tab name="dotfiles" {
         pane_ui {
