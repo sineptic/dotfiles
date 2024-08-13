@@ -66,6 +66,7 @@ keybinds clear-defaults=true {
         bind "Tab" { ToggleTab; }
 
         bind "f" {
+            SwitchToMode "Normal"; 
             LaunchOrFocusPlugin "tab-manager" {
                 floating true
                 ignore_case true
@@ -115,6 +116,8 @@ keybinds clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         // bind "Ctrl q" { Quit; }
         bind "Alt n" { NewPane; }
+        bind "Alt i" { MoveTab "Left"; }
+        bind "Alt o" { MoveTab "Right"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
         // bind "Alt j" "Alt Down" { MoveFocus "Down"; }
@@ -146,19 +149,25 @@ keybinds clear-defaults=true {
 }
 
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-    session-manager { path "session-manager"; }
-    tab-manager { path "tab-manager"; }
+    tab-bar location="zellij:tab-bar"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    compact-bar location="zellij:compact-bar"
+    session-manager location="zellij:session-manager"
+    welcome-screen location="zellij:session-manager" {
+        welcome_screen true
+    }
+    filepicker location="zellij:strider" {
+        cwd "/"
+    }
+    tab-manager location="file:~/.config/zellij/plugins/room.wasm"
 }
 
 ui {
-  pane_frames {
-    rounded_corners false
-    hide_session_name true
-  }
+    pane_frames {
+        rounded_corners false
+        hide_session_name true
+    }
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
