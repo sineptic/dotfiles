@@ -1,0 +1,23 @@
+layout {
+    pane_template name="pane_ui" {
+        command "fish"
+    }
+    tab name="misc" {
+        pane_ui {
+            args "-C" "fastfetch"
+        } 
+    }
+    tab name="development" {
+        pane_ui 
+    }
+    tab name="dotfiles" {
+        pane_ui {
+            cwd "~/dotfiles"
+        }
+    }
+    tab name="btop" {
+        pane {
+            command "btop"
+        }
+    }
+}
