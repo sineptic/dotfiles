@@ -14,6 +14,6 @@ git:
   autoFetch: false
   branchLogCmd: git log {{branchName}} --color --graph --pretty=format:"%C(red)%h%C(reset)%C(yellow)%d%Creset %s %C(green italic)(%cr)%C(reset) %C(blue)%an%C(reset) %C(white dim)%GK %C(reset)" --abbrev-commit
   allBranchesLogCmd: git log --all     --color --graph --pretty=format:"%C(red)%h%C(reset)%C(yellow)%d%Creset %s %C(green italic)(%cr)%C(reset) %C(blue)%an%C(reset) %C(white dim)%GK %C(reset)" --abbrev-commit
-  pagin:
+  paging:
     externalDiffCommand: "difft --color=always"
 
