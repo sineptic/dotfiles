@@ -144,7 +144,7 @@ keybinds clear-defaults=true {
         bind "Ctrl t" { SwitchToMode "Tab"; }
     }
     shared_except "move" "locked" {
-        bind "Ctrl h" { SwitchToMode "Move"; }
+        bind "Ctrl m" { SwitchToMode "Move"; }
     }
 }
 
@@ -160,7 +160,7 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/"
     }
-    tab-manager location="file:~/.config/zellij/plugins/room.wasm"
+    // tab-manager location="file:~/.config/zellij/plugins/room.wasm"
 }
 
 ui {

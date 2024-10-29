@@ -1,12 +1,19 @@
-import = [
-    "~/.config/alacritty/catppuccin-mocha.toml"
-]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[shell]
+program = "/usr/bin/fish"
+args = ["-c", "zellij"]
 
 [window]
 startup_mode = "Fullscreen"
+# blur = true # what this do
 
 [font]
 # normal = { family = "Monofur Nerd Font" }
 # size = 17
-normal = { family = "GeistMono Nerd Font" }
-size = 14
+# normal = { family= "ZedMono Nerd Font" }
+# size = 16
+# normal = { family = "GeistMono Nerd Font" }
+# size = 15
+normal = { family = "Indicate Mono" }
+size = 16

@@ -15,10 +15,10 @@ if status is-interactive
     function ftree -w eza 
         tree --level 1 $argv
     end
-    function suc -w command -d 'alisas for su -c "argv"'
+    function suc -w command -d 'alias for su -c "argv"'
         command su -c "$argv"
     end
-    function subc -w command -d 'alisas for su build -c "argv"'
+    function subc -w command -d 'alias for su build -c "argv"'
         command su build -c "$argv"
     end
     function lazygit -w lazygit
@@ -48,7 +48,7 @@ if status is-interactive
 
   starship init fish | source
   zoxide init --cmd cd fish | source
-  eval (zellij setup --generate-auto-start fish | string collect)
+  # eval (zellij setup --generate-auto-start fish | string collect)
   eval (zellij setup --generate-completion fish | string collect)
 end
 

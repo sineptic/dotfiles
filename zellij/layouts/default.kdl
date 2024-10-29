@@ -4,8 +4,8 @@ layout {
     }
     tab name="misc" focus=true {
         pane_ui {
-            args "-C" "fastfetch"
-        } 
+            // args "-C" "fastfetch"
+        }
     }
     tab name="development" {
         pane_ui {
