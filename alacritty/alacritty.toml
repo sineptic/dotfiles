@@ -1,19 +1,26 @@
-import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+[general]
+# import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/kanagawa.toml"]
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 args = ["-c", "zellij"]
 
 [window]
 startup_mode = "Fullscreen"
-# blur = true # what this do
+# opacity = 0.95
+# blur = true
 
 [font]
 # normal = { family = "Monofur Nerd Font" }
 # size = 17
 # normal = { family= "ZedMono Nerd Font" }
-# size = 16
-# normal = { family = "GeistMono Nerd Font" }
 # size = 15
-normal = { family = "Indicate Mono" }
-size = 16
+# normal = { family = "GeistMono Nerd Font" }
+# size = 14
+# normal = { family = "Fragment Mono" }
+# size = 14
+normal = { family = "SpaceMono Nerd Font" }
+size = 14
+# normal = { family = "Indicate Mono" }
+# size = 16

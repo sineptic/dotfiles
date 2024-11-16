@@ -18,7 +18,6 @@ set -l programs {
 "starship",
 "wget",
 "fisher",
-"starship",
 "yazi",
 "lazygit",
 "alacritty",
@@ -127,7 +126,14 @@ function starship_dotfiles
   command_silent rm -rf "$dotfiles_dir/starship/catppuccin/"
   command_silent mkdir -p "$dotfiles_dir/starship/catppuccin/"
   command_silent wget --no-clobber -qP "$dotfiles_dir/starship/catppuccin" https://github.com/sineptic/starship-catppuccin/raw/main/starship.toml
-  command_silent ln -sf "$dotfiles_dir/starship/catppuccin/starship.toml" "$HOME/.config/"
+
+  command_silent rm -rf "$dotfiles_dir/starship/kanagawa/"
+  command_silent mkdir -p "$dotfiles_dir/starship/kanagawa/"
+  command_silent wget --no-clobber -qP "$dotfiles_dir/starship/kanagawa" https://github.com/sineptic/starship-kanagawa/raw/main/starship.toml
+
+  # set -f selected_theme "catppuccin"
+  set -f selected_theme "kanagawa"
+  command_silent ln -sf "$dotfiles_dir/starship/$selected_theme/starship.toml" "$HOME/.config/"
   echo "starship configuration is finished"
 end
 
@@ -155,6 +161,7 @@ function yazi_dotfiles # TODO: add theme downloading
   command_silent ln -sf "$dotfiles_dir/yazi" "$HOME/.config/"
   echo "yazi configuration is finished"
 end
+
 
 function lazygit_dotfiles # TODO: add theme downloading
   command_silent ln -sf "$dotfiles_dir/lazygit" "$HOME/.config/"

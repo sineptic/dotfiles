@@ -12,3 +12,7 @@ fish/functions/_**
 
 starship/catppuccin/**
 lazygit/catppuccin/**
+
+lazygit/kanagawa.yml
+starship/kanagawa/
+alacritty/kanagawa.toml

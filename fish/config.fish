@@ -22,7 +22,8 @@ if status is-interactive
         command su build -c "$argv"
     end
     function lazygit -w lazygit
-        command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/catppuccin/themes-mergable/mocha/mauve.yml" $argv
+        # command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/catppuccin/themes-mergable/mocha/mauve.yml" $argv
+        command lazygit --use-config-file="$(command lazygit -cd)/config.yml,$(command lazygit -cd)/kanagawa.yml" $argv
     end
     function lg -w lazygit
         lazygit $argv
@@ -45,6 +46,17 @@ if status is-interactive
     function .. 
         z ..
     end
+    function typos
+        command typos -c ~/dotfiles/typos.toml $argv
+    end
+
+    function mkd
+        mkdir $argv
+    end
+    function cdmkd
+        mkdir $argv
+        cd $argv
+    end
 
   starship init fish | source
   zoxide init --cmd cd fish | source
@@ -55,5 +67,9 @@ end
 set -a PATH "$HOME/.cargo/bin"
 # Created by `pipx`
 set PATH $PATH "$HOME/.local/bin"
+
 set -x EDITOR "nvim"
 set -x copy_cmd "fish_clipboard_copy"
+
+set -x GOPATH "$(go env GOPATH)"
+set -a PATH "$GOPATH/bin"
